@@ -1,2 +1,2 @@
 # SwishIt
-nba sportsbook wrapper
+nba parlay ai wrapper
