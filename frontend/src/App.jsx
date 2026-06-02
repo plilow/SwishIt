@@ -7,7 +7,7 @@ import ParlaySlip from "./components/ParlaySlip";
 import GenerateButton from "./components/GenerateButton";
 import "./App.css";
 
-const API_BASE = "http://localhost:3001/api";
+const API_BASE = "https://swishit-production.up.railway.app/api";
 
 export default function App() {
   const [games, setGames] = useState([]);

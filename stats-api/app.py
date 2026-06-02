@@ -1,20 +1,13 @@
 import os
-import sys
-import traceback
+from flask import Flask, jsonify, request
+from nba_api.stats.endpoints import playergamelog, commonallplayers
+from nba_api.stats.library.parameters import SeasonAll
+import pandas as pd
 
-try:
-    from flask import Flask, jsonify, request
-    from nba_api.stats.endpoints import playergamelog, commonallplayers
-    from nba_api.stats.library.parameters import SeasonAll
-    import pandas as pd
-    print("All imports successful", flush=True)
-except Exception as e:
-    print(f"IMPORT ERROR: {e}", flush=True)
-    traceback.print_exc()
-    sys.exit(1)
 
 app = Flask(__name__)
 
+# Cache player list to avoid repeated calls
 _player_cache = None
 
 def get_all_players():
@@ -29,12 +22,14 @@ def find_player_id(name):
     name_lower = name.lower()
     match = players[players['DISPLAY_FIRST_LAST'].str.lower() == name_lower]
     if match.empty:
+        # Try partial match
         match = players[players['DISPLAY_FIRST_LAST'].str.lower().str.contains(name_lower)]
     if match.empty:
         return None
     return str(match.iloc[0]['PERSON_ID'])
 
 def get_recent_stats(player_id, games=10):
+    # Try playoffs first
     for season_type in ['Playoffs', 'Regular Season']:
         try:
             log = playergamelog.PlayerGameLog(
@@ -60,14 +55,18 @@ def get_recent_stats(player_id, games=10):
 def stats():
     name = request.args.get('player')
     games = int(request.args.get('games', 10))
+
     if not name:
         return jsonify({'error': 'player param required'}), 400
+
     player_id = find_player_id(name)
     if not player_id:
         return jsonify({'error': f'Player not found: {name}'}), 404
+
     averages = get_recent_stats(player_id, games)
     if not averages:
         return jsonify({'error': f'No stats found for {name}'}), 404
+
     return jsonify({'player': name, **averages})
 
 @app.route('/health')
