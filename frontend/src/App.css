@@ -140,7 +140,7 @@ body {
   font-size: 13px;
   color: var(--text2);
   position: absolute;
-  top: 2rem;
+  top: 1rem;
   right: 3rem;
   z-index: 999;
   background: var(--bg);
