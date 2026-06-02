@@ -1,7 +1,9 @@
+import os
 from flask import Flask, jsonify, request
 from nba_api.stats.endpoints import playergamelog, commonallplayers
 from nba_api.stats.library.parameters import SeasonAll
 import pandas as pd
+
 
 app = Flask(__name__)
 
