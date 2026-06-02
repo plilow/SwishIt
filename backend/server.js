@@ -7,7 +7,7 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-app.use(cors());
+app.use(cors({ origin: "https://swish-it.vercel.app" }));
 app.use(express.json());
 
 // ── Gemini setup ──────────────────────────────────────────
