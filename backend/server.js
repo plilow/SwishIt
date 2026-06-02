@@ -41,7 +41,7 @@ async function fetchPlayerProps(eventIds, bookmaker = "draftkings", region = "us
 }
 
 // ── NBA Stats helpers (Python microservice) ───────────────
-const STATS_BASE = "http://localhost:5001";
+const STATS_BASE = "https://swishit-production-e247.up.railway.app";
 
 
 async function fetchStatsForPlayers(playerNames) {
