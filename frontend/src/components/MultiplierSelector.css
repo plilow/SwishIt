@@ -1,0 +1,64 @@
+.multiplier-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.multiplier-pills {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.multiplier-pill {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--text2);
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  font-weight: 400;
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  letter-spacing: 0.02em;
+}
+
+.multiplier-pill:hover {
+  border-color: var(--border2);
+  color: var(--text);
+  background: var(--bg4);
+}
+
+.multiplier-pill.active {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.multiplier-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+}
+
+.multiplier-odds {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--accent);
+  letter-spacing: -0.01em;
+}
+
+.multiplier-legs {
+  color: var(--text3);
+  font-size: 12px;
+}
+
+.multiplier-legs::before {
+  content: '·';
+  margin-right: 10px;
+  color: var(--border2);
+}

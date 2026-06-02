@@ -1,0 +1,69 @@
+.gen-btn {
+  width: 100%;
+  padding: 16px 24px;
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  color: #040a00;
+  font-weight: 500;
+  transition: all 0.15s ease;
+  box-shadow: 0 -4px 24px var(--accent-glow);
+}
+
+.gen-btn:hover:not(:disabled) {
+  background: var(--accent2);
+  box-shadow: 0 0 36px rgba(127,255,79,0.35);
+  transform: translateY(-1px);
+}
+
+.gen-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.gen-btn.loading,
+.gen-btn:disabled {
+  background: var(--bg3);
+  color: var(--text3);
+  box-shadow: none;
+  cursor: not-allowed;
+  border: 1px solid var(--border);
+}
+
+.gen-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.gen-label {
+  font-weight: 500;
+}
+
+.gen-meta {
+  opacity: 0.6;
+  font-size: 11px;
+}
+
+.gen-arrow {
+  font-size: 16px;
+  margin-left: 2px;
+}
+
+/* Spinner */
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--border2);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

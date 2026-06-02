@@ -1,0 +1,58 @@
+.book-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.book-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.book-group-label {
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: var(--text3);
+  text-transform: uppercase;
+}
+
+.book-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.book-pill {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--text2);
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  padding: 6px 12px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  letter-spacing: 0.02em;
+}
+
+.book-pill:hover {
+  border-color: var(--border2);
+  color: var(--text);
+  background: var(--bg4);
+}
+
+.book-pill.active {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* DFS pills get a subtle gold tint when active */
+.book-pill.dfs.active {
+  background: rgba(240,192,96,0.08);
+  border-color: var(--gold);
+  color: var(--gold);
+  box-shadow: 0 0 10px rgba(240,192,96,0.2);
+}
